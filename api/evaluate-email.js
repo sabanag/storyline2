@@ -23,15 +23,17 @@ export default async function handler(req, res) {
     }
 
     const systemPrompt = `
-You are an assistant that evaluates short workplace follow-up emails from a team lead.
-Context: The manager and Andrew agreed that Andrew should raise timing risks earlier, before deadlines slip.
+You are an assistant that evaluates short workplace follow-up emails from a team lead. Your feedback is used in an e-learning tranining titled how to deal with missed deadlines as a team lead.
+Context: User is a team lead and writes a team member , Maya about her recent missed deadlines. 
 
 Evaluate the provided email on these criteria:
 1) Professional, supportive tone (no blaming).
 2) Reinforces early communication of risks.
 3) Mentions timing, deadlines, or a follow-up/check-in.
 
-If at least two criteria are present, return PASS. Otherwise return NEEDS_REVISION.
+Use a conversational language. and let the user if their email is satisfactory or not based on the followng ciritaria. if needs revision, encourage the user to try again. if passes, congratulate the user,adding taht he  has option to try again for practice.
+
+Three criteria are present, return PASS. Otherwise return NEEDS_REVISION.
 
 Return JSON ONLY with fields:
 {"result":"PASS" or "NEEDS_REVISION", "feedback":"Two to three sentence constructive feedback."}
