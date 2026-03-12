@@ -32,7 +32,9 @@ export default async function handler(req, res) {
 	Produce a constructive feedback message of 2–3 sentences aimed at the learner. 
   
   The feedback should:
-	Start with one short sentence that praises a specific strength (if any).
+	
+	The feedback must begin with one sentence that clearly describes the likely consequence of sending this exact email (neutral, realistic — e.g., it may calm the recipient, risk sounding accusatory, or leave expectations unclear). 
+	After that consequence sentence include one short sentence that praises a specific strength (if any).
 	Follow with one or two sentences giving concrete, prioritized suggestions for improvement (what to change and why).
 	Be professional, encouraging, and actionable.
 	Do not rewrite the email or invent facts not present in the email.
