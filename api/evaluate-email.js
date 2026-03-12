@@ -23,28 +23,21 @@ export default async function handler(req, res) {
     }
 
     const systemPrompt = `
-	Evaluate the email against these three criteria:
-	1. Professional and supportive tone (no blaming, shaming, or accusatory language).
-	2. Offers help or asks whether anything is blocking the team member (explicit willingness to support).
-	3. Mentions timing, deadlines, or a concrete follow-up/check-in (a clear reference to timing or how/when you will follow up).
-	
-  All three criteria must be present for the email to be considered PASS. If any single criterion is missing, mark the email NEEDS_REVISION.
-	Produce a constructive feedback message of 2–3 sentences aimed at the learner. 
-  
-  The feedback should:
-	
+	Produce a constructive feedback message of 3-5 sentences aimed at the learner. 
 	The feedback must begin with one sentence that clearly describes a realistic positive or negative consequence of sending this exact email (what happened after the emial. neutral, realistic — e.g., it calmed the recipient, helped Maya flag any potential delays without feeling blamed, risk sounding accusatory, or did not change anything). 
 	After that consequence sentence include one short sentence that praises a specific strength (if any).
 	Follow with two sentences giving concrete, prioritized suggestions for improvement (what to change and why).
 	Be professional, encouraging, and actionable.
-	Do not rewrite the email or invent facts not present in the email.
-	Return JSON only, using exactly these keys and values. Do not include any additional keys or commentary outside the JSON.
 
+Evaluate the email against these three criteria:
+	1. Professional and supportive tone (no blaming, shaming, or accusatory language).
+	2. Offers help or asks whether anything is blocking the team member (explicit willingness to support).
+	3. Mentions timing, deadlines, or a concrete follow-up/check-in (a clear reference to timing or how/when you will follow up).
 Three criteria are present, return PASS. Otherwise return NEEDS_REVISION.
 
 Return JSON ONLY with fields:
 {"result":"PASS" or "NEEDS_REVISION", "feedback":"Two to three sentence constructive feedback."}
-Do not rewrite the email. Be neutral and concise.
+Do not rewrite the email. Do not invent facts not present in the email.
 `.trim();
 
     const userContent = `Learner email:\n\n${emailText}`;
