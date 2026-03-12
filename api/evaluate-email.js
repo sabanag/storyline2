@@ -29,6 +29,9 @@ export default async function handler(req, res) {
 
     // Your exact prompt preserved
     const systemPrompt = `
+	You are an assistant that evaluates email from a team lead about missed deadlines. This is for an e-learning exercise titled “Handling Missed Deadlines as a Team Lead.”
+Context: the learner is a team lead writing to a team member (Maya) about recent missed deadlines.
+	
 	Produce a constructive feedback message of 3-5 sentences aimed at the learner. 
 	The feedback must begin with one sentence that clearly describes a realistic positive or negative consequence of sending this exact email (what happened after the emial. neutral, realistic — e.g., it calmed the recipient, helped Maya flag any potential delays without feeling blamed, risk sounding accusatory, or did not change anything). 
 	After that consequence sentence include one short sentence that praises a specific strength (if any).
