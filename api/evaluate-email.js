@@ -1,44 +1,35 @@
 // api/evaluate-email.js
 
-res.setHeader('Access-Control-Allow-Credentials', true);
-res.setHeader('Access-Control-Allow-Origin', '*'); // This allows Storyline to talk to Vercel
-res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-client-key');
-
-if (req.method === 'OPTIONS') {
-  res.status(200).end();
-  return;
-}
-
 export default async function handler(req, res) {
-  // 1. Enhanced CORS & Method Guard
-  res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN || '*');
+  // 1. Security & CORS (Tells the browser Storyline is allowed to talk to this script)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*'); 
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-client-key');
   
-  if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
   try {
-    // 2. Authorization
+    // 2. Authorization (Matches your Storyline "feryala" key)
     const clientKey = req.headers['x-client-key'];
     if (!clientKey || clientKey !== process.env.ADMIN_KEY) {
       return res.status(401).json({ error: 'unauthorized' });
     }
 
-    // 3. Validation
     const { emailText } = req.body || {};
-    if (!emailText || typeof emailText !== 'string' || emailText.trim().length === 0) {
-      return res.status(400).json({ error: 'Valid emailText string is required' });
+    if (!emailText) {
+      return res.status(400).json({ error: 'No email text provided' });
     }
 
     const OPENAI_KEY = process.env.OPENAI_API_KEY;
-    if (!OPENAI_KEY) {
-      console.error('[Config Error]: Missing OPENAI_API_KEY');
-      return res.status(500).json({ error: 'Server configuration error' });
-    }
 
-    // Your exact prompt preserved
+    // 3. YOUR EXACT AI PROMPT (Restored)
     const systemPrompt = `
 	Produce a constructive feedback message of 3-5 sentences aimed at the learner. 
 	The feedback must begin with one sentence that clearly describes a realistic positive or negative consequence of sending this exact email (what happened after the emial. neutral, realistic — e.g., it calmed the recipient, helped Maya flag any potential delays without feeling blamed, risk sounding accusatory, or did not change anything). 
@@ -57,7 +48,7 @@ Return JSON ONLY with fields:
 Do not rewrite the email. Do not invent facts not present in the email.
 `.trim();
 
-    // 4. OpenAI Request with JSON Mode enabled
+    // 4. OpenAI Request
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -70,38 +61,23 @@ Do not rewrite the email. Do not invent facts not present in the email.
           { role: 'system', content: systemPrompt },
           { role: 'user', content: `Learner email content to evaluate:\n"""\n${emailText}\n"""` }
         ],
-        response_format: { type: "json_object" }, // Forces valid JSON output
-        temperature: 0,
-        max_tokens: 300
+        response_format: { type: "json_object" }, 
+        temperature: 0
       })
     });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error('[OpenAI Error]:', errorData);
-      return res.status(502).json({ error: 'AI provider error', details: errorData.error?.message });
-    }
 
     const data = await response.json();
     const content = data.choices[0].message.content;
 
-    // 5. Safe Parsing
-    try {
-      const parsed = JSON.parse(content);
-      return res.status(200).json({
-        result: parsed.result || 'NEEDS_REVISION',
-        feedback: parsed.feedback || 'Please review the email for tone and timing.'
-      });
-    } catch (parseError) {
-      console.error('[Parse Error]: AI did not return valid JSON', content);
-      return res.status(500).json({ error: 'Failed to parse AI response' });
-    }
+    // 5. Send back to Storyline
+    const parsed = JSON.parse(content);
+    return res.status(200).json({
+      result: parsed.result || 'NEEDS_REVISION',
+      feedback: parsed.feedback || 'No feedback generated.'
+    });
 
   } catch (err) {
-    console.error('[Runtime Error]:', err);
+    console.error('Error:', err);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
-
-
-
