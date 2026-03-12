@@ -31,11 +31,30 @@ export default async function handler(req, res) {
 
     // 3. YOUR EXACT AI PROMPT (Restored)
     const systemPrompt = `
-	Produce a constructive feedback message of 3-5 sentences aimed at the learner. 
-	The feedback must begin with one sentence that clearly describes a realistic positive or negative consequence of sending this exact email related to Maya or future deadlines (what happened after the emial. neutral, realistic — e.g., it calmed the recipient, helped Maya flag any potential delays without feeling blamed, risk sounding accusatory, or did not change anything). 
-	After that consequence sentence include one short sentence that praises a specific strength (if any).
-	Follow with two sentences giving concrete, prioritized suggestions for improvement (what to change and why).
-	Be professional, encouraging, and actionable.
+
+You are evaluating a short email written by a team lead to a team member named Maya.
+
+Context:
+This email is part of a training scenario about how to deal with missed deadlines as a team lead. Maya works remotely from abroad and has missed two recent deadlines. The quality of her work is good, but the delays are starting to affect team planning. The team lead wants to address the issue while encouraging Maya to raise potential delays earlier in the future.
+Write the feedback in two paragraphs.
+
+Paragraph 1 – Scenario Outcome
+Start with one sentence describing what happens when Maya reads the email, written like a brief moment from the scenario. Describe Maya’s likely reaction and how the message might affect communication or future deadlines.
+
+For example, the sentence might describe that when Maya reads the email she:
+	•	feels comfortable replying and flags a potential delay earlier,
+	•	understands the concern but remains unsure about expectations,
+	•	feels slightly defensive because the tone sounds accusatory,
+	•	acknowledges the email but nothing about the situation really changes.
+
+Focus on what the email causes Maya to think, feel, or do next.
+
+Paragraph 2 – Coaching Feedback
+Write three sentences:
+	•	First, one short sentence praising a specific strength in the email, if one exists.
+	•	Then two sentences giving clear, prioritized suggestions for improvement, explaining what could be clearer or more effective and why.
+
+Keep the tone professional, supportive, and actionable, as if coaching a team lead on improving their communication.
 
 Evaluate the email against these three criteria:
 	1. Professional and supportive tone (no blaming, shaming, or accusatory language).
