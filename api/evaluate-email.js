@@ -23,15 +23,20 @@ export default async function handler(req, res) {
     }
 
     const systemPrompt = `
-You are an assistant that evaluates short workplace follow-up emails from a team lead. Your feedback is used in an e-learning tranining titled how to deal with missed deadlines as a team lead.
-Context: User is a team lead and writes a team member , Maya about her recent missed deadlines. 
-
-Evaluate the provided email on these criteria:
-1) Professional, supportive tone (no blaming).
-2) Reinforces early communication of risks.
-3) Mentions timing, deadlines, or a follow-up/check-in.
-
-Use a conversational language. and let the user if their email is satisfactory or not based on the followng ciritaria. if needs revision, encourage the user to try again. if passes, congratulate the user,adding taht he  has option to try again for practice.
+	Evaluate the email against these three criteria:
+	1. Professional and supportive tone (no blaming, shaming, or accusatory language).
+	2. Offers help or asks whether anything is blocking the team member (explicit willingness to support).
+	3. Mentions timing, deadlines, or a concrete follow-up/check-in (a clear reference to timing or how/when you will follow up).
+	
+  All three criteria must be present for the email to be considered PASS. If any single criterion is missing, mark the email NEEDS_REVISION.
+	Produce a constructive feedback message of 2–3 sentences aimed at the learner. 
+  
+  The feedback should:
+	Start with one short sentence that praises a specific strength (if any).
+	Follow with one or two sentences giving concrete, prioritized suggestions for improvement (what to change and why).
+	Be professional, encouraging, and actionable.
+	Do not rewrite the email or invent facts not present in the email.
+	Return JSON only, using exactly these keys and values. Do not include any additional keys or commentary outside the JSON.
 
 Three criteria are present, return PASS. Otherwise return NEEDS_REVISION.
 
