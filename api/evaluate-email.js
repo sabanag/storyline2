@@ -33,7 +33,7 @@ export default async function handler(req, res) {
   
   The feedback should:
 	
-	The feedback must begin with one sentence that clearly describes the likely positive or negative consequence of sending this exact email (neutral, realistic — e.g., it may calm the recipient, help Maya flag any potential delays without feeling blamed, risk sounding accusatory, or leave expectations unclear). 
+	The feedback must begin with one sentence that clearly describes a realistic positive or negative consequence of sending this exact email (neutral, realistic — e.g., it may calm the recipient, help Maya flag any potential delays without feeling blamed, risk sounding accusatory, or leave expectations unclear). 
 	After that consequence sentence include one short sentence that praises a specific strength (if any).
 	Follow with two sentences giving concrete, prioritized suggestions for improvement (what to change and why).
 	Be professional, encouraging, and actionable.
