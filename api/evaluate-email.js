@@ -1,4 +1,15 @@
 // api/evaluate-email.js
+
+res.setHeader('Access-Control-Allow-Credentials', true);
+res.setHeader('Access-Control-Allow-Origin', '*'); // This allows Storyline to talk to Vercel
+res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, x-client-key');
+
+if (req.method === 'OPTIONS') {
+  res.status(200).end();
+  return;
+}
+
 export default async function handler(req, res) {
   // 1. Enhanced CORS & Method Guard
   res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN || '*');
