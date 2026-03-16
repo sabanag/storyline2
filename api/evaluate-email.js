@@ -34,33 +34,44 @@ export default async function handler(req, res) {
 
 You are evaluating a short email written by a team lead to a team member named Maya.
 
-Context:
-This email is part of a training scenario about how to deal with missed deadlines as a team lead. Maya works remotely from abroad and has missed two recent deadlines. The quality of her work is good, but the delays are starting to affect team planning. The team lead wants to address the issue while encouraging Maya to raise potential delays earlier in the future.
-Write the feedback in two paragraphs.
+CONTEXT:
+This is a workplace training scenario about managing missed deadlines. Maya works remotely 
+from abroad and has missed two recent deadlines. Her work quality is good, but the delays 
+are affecting team planning. The team lead's goal is to address the pattern while 
+encouraging Maya to flag potential delays earlier.
+
+EVALUATION CRITERIA:
+Assess whether the email meets ALL three of the following criteria:
+1. TONE — Professional and supportive; no blaming, shaming, or accusatory language.
+2. SUPPORT — Explicitly offers help or asks whether something is blocking Maya.
+3. FOLLOW-UP — Mentions timing, deadlines, or a concrete next step/check-in.
+
+RESULT RULE:
+- If ALL three criteria are met → result: "PASS"
+- If ANY criterion is missing → result: "NEEDS_REVISION"
+
+FEEDBACK FORMAT:
+Write exactly two paragraphs. Total word count must not exceed 50 words across both paragraphs.
 
 Paragraph 1 – Scenario Outcome
-Start with one sentence describing what happens when Maya reads the email, written like a brief moment from the scenario. Describe Maya’s likely reaction and how the message might affect communication or future deadlines.
-
-For example, the sentence might describe that when Maya reads the email she:
-	•	feels comfortable replying and flags a potential delay earlier,
-	•	understands the concern but remains unsure about expectations,
-	•	feels slightly defensive because the tone sounds accusatory,
-	•	acknowledges the email but nothing about the situation really changes.
-
-Focus on what the email causes Maya to think, feel, or do next.
+One sentence showing Maya's reaction as a direct consequence of receiving this email.
+- Start with "Because of your email, Maya..." or a similar phrasing that makes clear her 
+  reaction is caused by what you wrote.
+- Describe how the email makes Maya think, feel, or behave regarding future deadlines 
+  or communication.
+- Her reaction must reflect the actual tone and content of the email.
 
 Paragraph 2 – Coaching Feedback
-Write three sentences:
-	•	First, one short sentence praising a specific strength in the email, if one exists.
-	•	Then two sentences giving clear, prioritized suggestions for improvement, explaining what could be clearer or more effective and why.
+Highlight one specific strength (if a genuine one exists) and give the most important 
+improvement needed, explaining why it matters. If no strength exists, focus entirely 
+on improvements. Refer to the recipient as Maya, not "the recipient."
 
-Keep the tone professional, supportive, and actionable, as if coaching a team lead on improving their communication.
-
-Evaluate the email against these three criteria:
-	1. Professional and supportive tone (no blaming, shaming, or accusatory language).
-	2. Offers help or asks whether anything is blocking the team member (explicit willingness to support).
-	3. Mentions timing, deadlines, or a concrete follow-up/check-in (a clear reference to timing or how/when you will follow up).
-Three criteria are present, return PASS. Otherwise return NEEDS_REVISION.
+STRICT RULES:
+- Do not rewrite the email
+- Do not invent facts not present in the email
+- Do not address Maya directly — the feedback is for the team lead
+- Total feedback must not exceed 50 words
+- Return JSON ONLY, with no extra text, markdown, or explanation
 
 Return JSON ONLY with fields:
 {"result":"PASS" or "NEEDS_REVISION", "feedback":"Two to three sentence constructive feedback."}
