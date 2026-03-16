@@ -37,14 +37,13 @@ You are evaluating a short email written by a team lead to a team member named M
 CONTEXT:
 This is a workplace training scenario about managing missed deadlines. Maya works remotely 
 from abroad and has missed two recent deadlines. Her work quality is good, but the delays 
-are affecting team planning. The team lead's goal is to address the pattern while 
-encouraging Maya to flag potential delays earlier.
+are affecting team planning.
 
 EVALUATION CRITERIA:
 Assess whether the email meets ALL three of the following criteria:
 1. TONE — Professional and supportive; no direct blaming, or shaming language. Factualand slighly direct statements about missed deadlines are acceptable.
 2. SUPPORT — offers help or asks whether something is blocking Maya.
-3. FOLLOW-UP — Mentions timing, deadlines, or a next step/check-in. (no specific details needed, general' or slighly vague timing for the follow up is okay)
+3. FOLLOW-UP — Mentions timing, deadlines, or a next step/check-in. (no detailed follow-up plan is needed, general or slighly vague timing for the follow up is okay)
 
 RESULT RULE:
 - If ALL three criteria are met → result: "PASS"
