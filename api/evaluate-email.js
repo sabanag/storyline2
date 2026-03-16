@@ -41,7 +41,7 @@ are affecting team planning.
 
 EVALUATION CRITERIA:
 Assess whether the email meets ALL three of the following criteria:
-1. TONE — Professional and supportive; no direct blaming, or shaming language. Factualand slighly direct statements about missed deadlines are acceptable.
+1. TONE — Professional and supportive; no direct blaming, or shaming language. Factual and direct statements about missed deadlines are acceptable.
 2. SUPPORT — offers help or asks whether something is blocking Maya.
 3. FOLLOW-UP — Mentions timing, deadlines, or a next step/check-in. (no detailed/clear follow-up plan is needed while okay to have, general or slighly vague timing for the follow up is also okay)
 
