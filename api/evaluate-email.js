@@ -44,10 +44,10 @@ Assess whether the email meets ALL three of the following criteria:
 1. TONE — Professional and supportive; no direct blaming, or shaming language. Factual and direct statements about missed deadlines are acceptable.
 2. SUPPORT — offers help or asks whether something is blocking Maya.
 3. FOLLOW-UP — The email makes any reference to timing, deadlines, or next steps. 
-   This criterion is easy to pass. Accept any of the following as sufficient:
+   This criterion is easy to pass. Accept any of the following as sufficient and dont suggest improvements for this critaria:
    - A vague or general time reference (e.g., "soon," "going forward," "in the future")
-   - A soft suggestion to connect (e.g., "let's chat," "feel free to reach out")
-   - Any mention of deadlines, even in passing
+   - A soft suggestion to connect
+   - Any mention of check-in or follow up, even in passing
    Only fail this criterion if the email makes absolutely no reference to timing, 
    follow-up, or next steps whatsoever.
 RESULT RULE:
