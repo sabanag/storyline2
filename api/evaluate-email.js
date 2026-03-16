@@ -42,7 +42,7 @@ encouraging Maya to flag potential delays earlier.
 
 EVALUATION CRITERIA:
 Assess whether the email meets ALL three of the following criteria:
-1. TONE — Professional and supportive; no direct blaming, or shaming language.
+1. TONE — Professional and supportive; no direct blaming, or shaming language. Factualand slighly direct statements about missed deadlines are acceptable.
 2. SUPPORT — offers help or asks whether something is blocking Maya.
 3. FOLLOW-UP — Mentions timing, deadlines, or a next step/check-in. (general timing is ok)
 
