@@ -44,7 +44,7 @@ EVALUATION CRITERIA:
 Assess whether the email meets ALL three of the following criteria:
 1. TONE — Professional and supportive; no direct blaming, or shaming language. Factualand slighly direct statements about missed deadlines are acceptable.
 2. SUPPORT — offers help or asks whether something is blocking Maya.
-3. FOLLOW-UP — Mentions timing, deadlines, or a next step/check-in. (no specific details needed, general mentioning is okay)
+3. FOLLOW-UP — Mentions timing, deadlines, or a next step/check-in. (no specific details needed, general' or slighly vague timing for the follow up is okay)
 
 RESULT RULE:
 - If ALL three criteria are met → result: "PASS"
@@ -70,7 +70,7 @@ STRICT RULES:
 - Do not rewrite the email
 - Do not invent facts not present in the email
 - Do not address Maya directly — the feedback is for the team lead
-- Total feedback must not exceed 50 words
+- Total feedback must not exceed 52 words
 - Return JSON ONLY, with no extra text, markdown, or explanation
 
 Return JSON ONLY with fields:
